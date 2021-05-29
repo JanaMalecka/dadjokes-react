@@ -5,15 +5,15 @@ import Joke from './Joke';
 import { jokes } from './jokes';
 
 const App = () => {
-  const [likes, setLikes] = useState(0);
-  const [dislikes, setDislikes] = useState(0);
+  const [likes, setLikes] = useState(likes);
+  const [dislikes, setDislikes] = useState(dislikes);
 
-  /* const handleClickUp = (likes) => {
-    setLikes(likes + 1);
+  const handleClickUp = () => {
+    setLikes(joke.likes + 1);
   };
-  const handleClickDown = (dislikes) => {
-    setDislikes(dislikes + 1);
-  }; */
+  const handleClickDown = () => {
+    setDislikes(joke.dislikes + 1);
+  };
 
   return (
     <>
@@ -24,8 +24,8 @@ const App = () => {
             userAvatar={joke.avatar}
             userName={joke.name}
             text={joke.text}
-            likes={joke.likes}
-            dislikes={joke.dislikes}
+            likes={handleClickUp}
+            dislikes={handleClickDown}
           />
         ))}
       </div>

@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
-
+import { render } from 'react-dom';
 import './style.css';
 import { jokes } from '../jokes';
 
-const Joke = ({ userAvatar, userName, text, likes, dislikes }) => {
+const Joke = (props) => {
   const handleClickLikes = () => {
-    setLikes(likes + 1);
+    props.setLikes(likes + 1);
   };
+
   const handleClickDislikes = () => {
-    setDislikes(dislikes + 1);
+    props.setDislikes(dislikes + 1);
   };
 
   return (
     <div className="joke">
       <div className="joke__body">
         <div className="joke__user">
-          <img className="user-avatar" src={userAvatar} />
-          <p className="user-name">{userName}</p>
+          <img className="user-avatar" src={props.userAvatar} />
+          <p className="user-name">{props.userName}</p>
         </div>
 
-        <p className="joke__text">{text}</p>
+        <p className="joke__text">{props.text}</p>
       </div>
       <div className="joke__likes">
         <button
@@ -28,7 +29,7 @@ const Joke = ({ userAvatar, userName, text, likes, dislikes }) => {
           className="btn-like btn-like--up"
         ></button>
         <span id="likes-up" className="likes-count likes-count--up">
-          {likes}
+          {props.likes}
         </span>
         <button
           onClick={handleClickDislikes}
@@ -36,7 +37,7 @@ const Joke = ({ userAvatar, userName, text, likes, dislikes }) => {
           className="btn-like btn-like--down"
         ></button>
         <span id="likes-down" className="likes-count likes-count--down">
-          {dislikes}
+          {props.dislikes}
         </span>
       </div>
     </div>
